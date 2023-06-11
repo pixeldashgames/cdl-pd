@@ -1,0 +1,51 @@
+#include <stdio.h>
+#include <stdbool.h>
+
+bool is_vowel(char c)
+{
+    return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u';
+}
+
+char capitalize(char c)
+{
+    if (c >= 'a' && c <= 'z')
+    {
+        return c - 'a' + 'A';
+    }
+    return c;
+}
+
+int main()
+{
+    char *str = "Hello World";
+    printf("%s\n", str);
+    
+#queried
+    char *substr = str[0:5];
+#endqueried
+    printf("%s\n", substr);
+    
+#queried
+    char *substr2 = str[6:11];
+    printf("%s\n", substr2);
+#endqueried
+    
+#queried
+    char *vowels = [v for v in str where is_vowel(v)]; printf("%s\n", vowels);
+#endqueried
+
+#queried
+    char *consonants_and_a = [c for c in str where !is_vowel(c) || c == 'a'];
+#endqueried
+    
+#queried
+    printf("%s\n", consonants_and_a); char *capitalized = [capitalize(c) for c in str]; printf("%s\n", capitalized);
+#endqueried
+    
+#queried
+    char *cap_vowels_in_world = [capitalize(c) for c in [v for v in str[6:11] where is_vowel(v)]]; 
+    printf("%s\n", cap_vowels_in_world);
+#endqueried
+
+    return 0;
+}
